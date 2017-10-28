@@ -1,22 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { Routes, RouterModule } from '@angular/router';
 
 import { DataService } from './services/data.service';
 
 import { AppComponent } from './app.component';
-import { MainComponent } from './components/main/main.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { AppleComponent } from './components/apple/apple.component';
+import { ListComponent } from './components/list/list.component';
+
+const routes:Routes = [
+  { path: '', component: ListComponent },
+  { path: 'apple', component: AppleComponent },
+  { path: 'apple/:id', component: AppleComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
-    HeaderComponent,
-    FooterComponent
+    AppleComponent,
+    ListComponent
   ],
   imports: [
-    BrowserModule
+    RouterModule.forRoot( routes ),
+    BrowserModule,
+    HttpModule
   ],
   providers: [
     DataService
