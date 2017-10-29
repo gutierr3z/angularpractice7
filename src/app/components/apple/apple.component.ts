@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Apple } from '../../logic/apples';
 
 @Component({
@@ -12,7 +12,17 @@ export class AppleComponent implements OnInit {
   routingSubscription:any;
   apple:Apple;
 
-  constructor( private route:ActivatedRoute ) { }
+  constructor( private route:ActivatedRoute, private router:Router ) { }
+
+  cancel() {
+    this.router.navigate([
+      '/'
+    ]);
+  }
+
+  save() {
+
+  }
 
   ngOnInit() {
     this.apple = new Apple();

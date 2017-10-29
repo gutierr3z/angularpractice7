@@ -11,25 +11,37 @@ export class DataService {
 
   getList( callback ) {
 
-    // // http.get returns an observable
-    // this.http.get( `${ this.endpoint }/apples` )
-    // .subscribe( response => {
-    //   // response is the list
-    //   console.log( 'response: ', response.json() );
-    //   callback( response.json() );
-    // });
+    // http.get returns an observable
+    this.http.get( `${ this.endpoint }/apple` )
+    .subscribe( response => {
+      // response is the list
+      console.log( 'response: ', response.json() );
+      callback( response.json() );
+    });
 
-    const list = [
-      new Apple( 'aaaaa aaaaaa', 'aaaaa' ),
-      new Apple( 'bbbbb bbbbbb', 'bbbbb' ),
-    ];
+    // const list = [
+    //   new Apple( 'aaaaa aaaaaa', 'aaaaa' ),
+    //   new Apple( 'bbbbb bbbbbb', 'bbbbb' ),
+    // ];
 
-    callback( list );
+    // callback( list );
   }
 
   save( apple, callback ) {
     // TODO: change this with real web service
-    callback( true );
+    if( apple._id ) {
+      // its an update
+      this.http.put( `${this.endpoint}/apple/${apple._id}`, apple )
+        .subscribe( response => {
+          callback( true );
+        });
+    } else {
+      // its an insert
+      this.http.post( `${this.endpoint}/apple`, apple )
+      .subscribe( response => {
+        callback( true );
+      });
+    }
   }
 
 }

@@ -5,4 +5,13 @@
     <input placeHolder = "name" name = "name" [(ngModel)] = "apple.name">
     <br>
     <input placeHolder = "place" name = "place" [(ngModel)] = "apple.place">
+    <br>
+    <button (click) = "cancel()">Cancel</button>
+    <button (click) = "save()">Save</button>
 </form>
+
+<hr>
+
+<div>
+  {{ apple | json }}
+</div>
