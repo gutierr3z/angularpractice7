@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Apple } from '../../logic/apples';
 
 @Component({
   selector: 'app-apple',
@@ -9,11 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 export class AppleComponent implements OnInit {
 
   routingSubscription:any;
+  apple:Apple;
 
   constructor( private route:ActivatedRoute ) { }
 
   ngOnInit() {
-
+    this.apple = new Apple();
     this.routingSubscription = this.route.params.subscribe( params => {
       console.log( params[ 'id' ] );
     });

@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { AppleComponent } from './components/apple/apple.component';
 import { ListComponent } from './components/list/list.component';
 
+import { FormsModule } from '@angular/forms';
+
 const routes:Routes = [
   { path: '', component: ListComponent },
   { path: 'apple', component: AppleComponent },
@@ -24,7 +26,8 @@ const routes:Routes = [
   imports: [
     RouterModule.forRoot( routes ),
     BrowserModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [
     DataService
