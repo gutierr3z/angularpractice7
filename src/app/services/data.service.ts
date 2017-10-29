@@ -9,10 +9,17 @@ export class DataService {
 
   public endpoint = 'http://localhost:3000';
 
+  get( appleId:string, callback ) {
+    this.http.get( `${ this.endpoint }/apples/${ appleId }` )
+      .subscribe( response => {
+        callback( response.json() );
+      })
+  }
+
   getList( callback ) {
 
     // http.get returns an observable
-    this.http.get( `${ this.endpoint }/apple` )
+    this.http.get( `${ this.endpoint }/apples` )
     .subscribe( response => {
       // response is the list
       console.log( 'response: ', response.json() );
@@ -31,13 +38,13 @@ export class DataService {
     // TODO: change this with real web service
     if( apple._id ) {
       // its an update
-      this.http.put( `${this.endpoint}/apple/${apple._id}`, apple )
+      this.http.put( `${this.endpoint}/apples/${apple._id}`, apple )
         .subscribe( response => {
           callback( true );
         });
     } else {
       // its an insert
-      this.http.post( `${this.endpoint}/apple`, apple )
+      this.http.post( `${this.endpoint}/apples`, apple )
       .subscribe( response => {
         callback( true );
       });

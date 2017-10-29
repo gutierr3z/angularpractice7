@@ -12,7 +12,7 @@ const datastore = new nedb({
 
 const restAPI = rest();
 
-restAPI.addDatastore( 'stuff', datastore );
+restAPI.addDatastore( 'apples', datastore );
 
 app.use( cors() );
 app.use( '/', restAPI );
