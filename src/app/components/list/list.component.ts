@@ -29,6 +29,4 @@ export class ListComponent implements OnInit {
       this.list = list;
     });
   }
-
-  
 }
