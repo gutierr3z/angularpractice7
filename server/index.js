@@ -4,14 +4,13 @@ const rest = require( "express-nedb-rest" );
 const cors = require( "cors" );
 
 const app = express();
+const restAPI = rest();
 
 const datastore = new nedb({
     
-    filename: 'myAppDB',
+    filename: 'myAppDB', // name of file generated
     autoload: true
 });
-
-const restAPI = rest();
 
 restAPI.addDatastore( 'apples', datastore );
 

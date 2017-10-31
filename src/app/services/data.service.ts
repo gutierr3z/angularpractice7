@@ -9,13 +9,14 @@ export class DataService {
 
   public endpoint = 'http://localhost:3000';
 
+  // ------------------------------
   get( appleId:string, callback ) {
     this.http.get( `${ this.endpoint }/apples/${ appleId }` )
       .subscribe( response => {
         callback( response.json() );
       })
   }
-
+  // ------------------------------
   getList( callback ) {
 
     // http.get returns an observable
@@ -33,7 +34,7 @@ export class DataService {
 
     // callback( list );
   }
-
+  // ------------------------------
   save( apple, callback ) {
     // TODO: change this with real web service
     if( apple._id ) {
@@ -50,5 +51,5 @@ export class DataService {
       });
     }
   }
-
+  // ------------------------------
 }

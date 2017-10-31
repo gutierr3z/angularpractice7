@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
     this.router.navigate([
       '/apple', 
       apple._id
-    ])
+    ]);
   }
 
   ngOnInit() {
